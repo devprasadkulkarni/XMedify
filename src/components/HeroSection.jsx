@@ -1,0 +1,198 @@
+import {
+    Autocomplete,
+    Box,
+    Button,
+    Card,
+    Grid,
+    TextField,
+    Typography,
+} from "@mui/material";
+import heroImage from "../assets/hero_image.svg";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SearchIcon from "@mui/icons-material/Search";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import ambulance from "../assets/search_ambulance.svg";
+import doctors from "../assets/search_doctors.svg";
+import hospitals from "../assets/search_hospitals.svg";
+import labs from "../assets/search_labs.svg";
+import medicalStore from "../assets/search_medical_store.svg";
+
+const API_BASE = "https://meddata-backend.onrender.com";
+
+const HeroSection = () => {
+    const [states, setStates] = useState([]);
+    const [cities, setCities] = useState([]);
+    const [selectedState, setSelectedState] = useState(null);
+    const [selectedCity, setSelectedCity] = useState(null);
+
+    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+
+    const fetchData = async (endPoint, setter) => {
+        try {
+            const { data } = await axios.get(`${API_BASE}/${endPoint}`);
+            setter(data);
+        } catch (err) {
+            console.error(`Error fetching ${endPoint}: `, err);
+        }
+    };
+
+    useEffect(() => {
+        fetchData("states", setStates);
+    }, []);
+
+    useEffect(() => {
+        if (selectedState) {
+            fetchData(`cities/${selectedState}`, setCities);
+        }
+    }, [selectedState]);
+
+    const searchItems = [
+        { image: doctors, text: "Doctors" },
+        { image: labs, text: "Labs" },
+        { image: hospitals, text: "Hospitals" },
+        { image: medicalStore, text: "Medical Store" },
+        { image: ambulance, text: "Ambulance" },
+    ];
+
+    return (
+        <Box sx={{ position: "relative" }}>
+            {/* Hero grid */}
+            <Grid container sx={{ backgroundColor: "#e8f1ff", px: 40, py: 10 }}>
+                {/* Left section */}
+                <Grid size={6}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            flexDirection: "column",
+                            gap: 2,
+                        }}
+                    >
+                        <Typography variant="h3">
+                            Skip the travel! Find Online
+                        </Typography>
+                        <Box sx={{ display: "flex", gap: 1 }}>
+                            <Typography variant="h1" sx={{ fontWeight: 700 }}>
+                                Medical
+                            </Typography>
+                            <Typography
+                                variant="h1"
+                                sx={{ color: "primary.main", fontWeight: 700 }}
+                            >
+                                Centers
+                            </Typography>
+                        </Box>
+
+                        <Typography variant="h5" sx={{ color: "gray" }}>
+                            Connect instantly with a 24x7 specialist or choose
+                            to
+                            <br />
+                            video visit a particular doctor.
+                        </Typography>
+                        <Box>
+                            <Button>Find Centers</Button>
+                        </Box>
+                    </Box>
+                </Grid>
+                {/* Right section */}
+                <Grid size={6}>
+                    <img src={heroImage} alt="hero image" />
+                </Grid>
+            </Grid>
+
+            {/* Hospitals search for selected state and city */}
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 4,
+                    borderRadius: "10px",
+                    backgroundColor: "gray",
+                    position: "absolute",
+                    top: "105%",
+                    left: "50%",
+                    transform: "translate(-50%,-50%)",
+                    backgroundColor: "white",
+                    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+                    py: 5,
+                }}
+            >
+                {/* State and city selector */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        px: 30,
+                        justifyContent: "space-between",
+                        gap: 20,
+                    }}
+                >
+                    {/* State selector */}
+                    <Autocomplete
+                        options={states}
+                        value={selectedState}
+                        onChange={(e, newValue) => {
+                            setSelectedState(newValue);
+                            setSelectedCity(null);
+                        }}
+                        renderInput={(params) => (
+                            <TextField {...params} label="State" />
+                        )}
+                        sx={{ width: 300 }}
+                    ></Autocomplete>
+                    {/* City selector */}
+                    <Autocomplete
+                        options={cities}
+                        value={selectedCity}
+                        onChange={(e, newValue) => setSelectedCity(newValue)}
+                        renderInput={(params) => (
+                            <TextField {...params} label="City" />
+                        )}
+                        sx={{ width: 300 }}
+                    ></Autocomplete>
+                    <Button variant="contained" disabled={!selectedCity}>
+                        <SearchIcon /> Search
+                    </Button>
+                </Box>
+                <Box>
+                    <Typography variant="h6" sx={{ textAlign: "center" }}>
+                        You maybe looking for
+                    </Typography>
+                    <Grid container>
+                        <Box
+                            sx={{
+                                display: "grid",
+                                gridTemplateColumns: "repeat(5, 1fr)",
+                                gap: 2,
+                                width: "100%",
+                                px: 30,
+                                py: 4,
+                            }}
+                        >
+                            {searchItems.map((item) => (
+                                <Card
+                                    sx={{
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        height: 150,
+                                    }}
+                                >
+                                    <Box key={item.text}>
+                                        <img
+                                            src={item.image}
+                                            alt="search items"
+                                        />
+                                        <Box key={item.text}>{item.text}</Box>
+                                    </Box>
+                                </Card>
+                            ))}
+                        </Box>
+                    </Grid>
+                </Box>
+            </Box>
+        </Box>
+    );
+};
+
+export default HeroSection;
