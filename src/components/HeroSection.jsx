@@ -2,7 +2,6 @@ import {
     Autocomplete,
     Box,
     Button,
-    Card,
     Grid,
     TextField,
     Typography,
@@ -11,8 +10,6 @@ import heroImage from "../assets/hero_image.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 import ambulance from "../assets/search_ambulance.svg";
 import doctors from "../assets/search_doctors.svg";
 import hospitals from "../assets/search_hospitals.svg";
@@ -28,8 +25,6 @@ const HeroSection = () => {
     const [selectedState, setSelectedState] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
     const [selected, setSelected] = useState("Hospitals");
-
-    const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
     const fetchData = async (endPoint, setter) => {
         try {
