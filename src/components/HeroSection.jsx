@@ -18,6 +18,7 @@ import doctors from "../assets/search_doctors.svg";
 import hospitals from "../assets/search_hospitals.svg";
 import labs from "../assets/search_labs.svg";
 import medicalStore from "../assets/search_medical_store.svg";
+import titik from "../assets/titik_titik.svg";
 
 const API_BASE = "https://meddata-backend.onrender.com";
 
@@ -26,6 +27,7 @@ const HeroSection = () => {
     const [cities, setCities] = useState([]);
     const [selectedState, setSelectedState] = useState(null);
     const [selectedCity, setSelectedCity] = useState(null);
+    const [selected, setSelected] = useState("Hospitals");
 
     const [emblaRef] = useEmblaCarousel({ loop: true }, [Autoplay()]);
 
@@ -59,7 +61,14 @@ const HeroSection = () => {
     return (
         <Box sx={{ position: "relative" }}>
             {/* Hero grid */}
-            <Grid container sx={{ backgroundColor: "#e8f1ff", px: 40, py: 10 }}>
+            <Grid
+                container
+                sx={{
+                    backgroundColor: "#e8f1ff",
+                    px: 40,
+                    pt: 10,
+                }}
+            >
                 {/* Left section */}
                 <Grid size={6}>
                     <Box
@@ -67,6 +76,7 @@ const HeroSection = () => {
                             display: "flex",
                             flexDirection: "column",
                             gap: 2,
+                            pt: 4,
                         }}
                     >
                         <Typography variant="h3">
@@ -91,13 +101,22 @@ const HeroSection = () => {
                             video visit a particular doctor.
                         </Typography>
                         <Box>
-                            <Button>Find Centers</Button>
+                            <Button variant="contained">Find Centers</Button>
                         </Box>
                     </Box>
                 </Grid>
                 {/* Right section */}
                 <Grid size={6}>
                     <img src={heroImage} alt="hero image" />
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            top: 297,
+                            right: 370,
+                        }}
+                    >
+                        <img src={titik} alt="titik" />
+                    </Box>
                 </Grid>
             </Grid>
 
@@ -110,7 +129,7 @@ const HeroSection = () => {
                     borderRadius: "10px",
                     backgroundColor: "gray",
                     position: "absolute",
-                    top: "105%",
+                    top: "115%",
                     left: "50%",
                     transform: "translate(-50%,-50%)",
                     backgroundColor: "white",
@@ -166,27 +185,43 @@ const HeroSection = () => {
                                 gap: 2,
                                 width: "100%",
                                 px: 30,
-                                py: 4,
+                                pt: 4,
                             }}
                         >
-                            {searchItems.map((item) => (
-                                <Card
-                                    sx={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        height: 150,
-                                    }}
-                                >
-                                    <Box key={item.text}>
-                                        <img
-                                            src={item.image}
-                                            alt="search items"
-                                        />
-                                        <Box key={item.text}>{item.text}</Box>
-                                    </Box>
-                                </Card>
-                            ))}
+                            {searchItems.map((item) => {
+                                const isSelected = selected === item.text;
+                                return (
+                                    <Button
+                                        key={item.text}
+                                        variant={
+                                            isSelected ? "outlined" : "text"
+                                        }
+                                        onClick={() => setSelected(item.text)}
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "center",
+                                            justifyContent: "center",
+                                            height: 150,
+                                            width: 150,
+                                            borderRadius: 2,
+                                            textTransform: "none",
+                                            gap: 1,
+                                            backgroundColor: isSelected
+                                                ? "#eef8ff"
+                                                : "",
+                                        }}
+                                    >
+                                        <Box>
+                                            <img
+                                                src={item.image}
+                                                alt="search items"
+                                            />
+                                            <Box>{item.text}</Box>
+                                        </Box>
+                                    </Button>
+                                );
+                            })}
                         </Box>
                     </Grid>
                 </Box>

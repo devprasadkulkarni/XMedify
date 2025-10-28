@@ -19,6 +19,7 @@ const Navbar = () => {
                 px: 40,
                 py: 3,
                 alignItems: "center",
+                backgroundColor: "#e8f1ff",
             }}
         >
             <Box>
