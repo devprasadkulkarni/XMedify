@@ -59,7 +59,9 @@ const Specialisation = () => {
                 gap: 4,
             }}
         >
-            <Typography variant="h3">Find by specialisation</Typography>
+            <Typography variant="h3" sx={{ color: "#1B3C74", fontWeight:'bold' }}>
+                Find by specialisation
+            </Typography>
             <Box>
                 <Box
                     sx={{
@@ -72,6 +74,7 @@ const Specialisation = () => {
                 >
                     {specialisations.map((item, idx) => (
                         <Button
+                            key={idx}
                             sx={{
                                 display: "flex",
                                 flexDirection: "column",

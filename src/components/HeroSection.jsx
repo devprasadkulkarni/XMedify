@@ -143,6 +143,7 @@ const HeroSection = () => {
                 >
                     {/* State selector */}
                     <Autocomplete
+                        id="state"
                         options={states}
                         value={selectedState}
                         onChange={(e, newValue) => {
@@ -156,6 +157,7 @@ const HeroSection = () => {
                     ></Autocomplete>
                     {/* City selector */}
                     <Autocomplete
+                        id="city"
                         options={cities}
                         value={selectedCity}
                         onChange={(e, newValue) => setSelectedCity(newValue)}
