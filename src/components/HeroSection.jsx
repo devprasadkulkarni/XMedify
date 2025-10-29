@@ -172,53 +172,51 @@ const HeroSection = () => {
                     <Typography variant="h6" sx={{ textAlign: "center" }}>
                         You maybe looking for
                     </Typography>
-                    <Grid container>
-                        <Box
-                            sx={{
-                                display: "grid",
-                                gridTemplateColumns: "repeat(5, 1fr)",
-                                gap: 2,
-                                width: "100%",
-                                px: 30,
-                                pt: 4,
-                            }}
-                        >
-                            {searchItems.map((item) => {
-                                const isSelected = selected === item.text;
-                                return (
-                                    <Button
-                                        key={item.text}
-                                        variant={
-                                            isSelected ? "outlined" : "text"
-                                        }
-                                        onClick={() => setSelected(item.text)}
-                                        sx={{
-                                            display: "flex",
-                                            flexDirection: "column",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            height: 150,
-                                            width: 150,
-                                            borderRadius: 2,
-                                            textTransform: "none",
-                                            gap: 1,
-                                            backgroundColor: isSelected
-                                                ? "#eef8ff"
-                                                : "",
-                                        }}
-                                    >
-                                        <Box>
-                                            <img
-                                                src={item.image}
-                                                alt="search items"
-                                            />
-                                            <Box>{item.text}</Box>
-                                        </Box>
-                                    </Button>
-                                );
-                            })}
-                        </Box>
-                    </Grid>
+                    <Box
+                        sx={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(5, 1fr)",
+                            gap: 2,
+                            width: "100%",
+                            px: 30,
+                            pt: 4,
+                        }}
+                    >
+                        {searchItems.map((item) => {
+                            const isSelected = selected === item.text;
+                            return (
+                                <Button
+                                    key={item.text}
+                                    variant={isSelected ? "outlined" : "text"}
+                                    onClick={() => setSelected(item.text)}
+                                    sx={{
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        height: 150,
+                                        width: 150,
+                                        borderRadius: 2,
+                                        textTransform: "none",
+                                        gap: 1,
+                                        backgroundColor: isSelected
+                                            ? "#eef8ff"
+                                            : "",
+                                    }}
+                                >
+                                    <Box>
+                                        <img
+                                            src={item.image}
+                                            alt="search items"
+                                        />
+                                        <Typography sx={{ color: "gray" }}>
+                                            {item.text}
+                                        </Typography>
+                                    </Box>
+                                </Button>
+                            );
+                        })}
+                    </Box>
                 </Box>
             </Box>
         </Box>
