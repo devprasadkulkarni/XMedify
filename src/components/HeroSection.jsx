@@ -122,7 +122,6 @@ const HeroSection = () => {
                     flexDirection: "column",
                     gap: 4,
                     borderRadius: "10px",
-                    backgroundColor: "gray",
                     position: "absolute",
                     top: "115%",
                     left: "50%",

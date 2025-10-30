@@ -6,6 +6,7 @@ import OffersCarousel from "./components/OffersCarousel";
 import Specialisation from "./components/Specialisation";
 import SpecialistCarousel from "./components/Carousels/SpecialistCarousel";
 import PatientCaring from "./components/PatientCaring";
+import BlogNews from "./components/BlogNews";
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
             <Specialisation />
             {/* <SpecialistCarousel /> */}
             <PatientCaring />
+            <BlogNews />
         </div>
     );
 };
