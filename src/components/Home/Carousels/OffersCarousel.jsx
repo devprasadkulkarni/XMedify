@@ -1,8 +1,8 @@
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { Box } from "@mui/material";
-import offer1 from "../assets/offers-carousel-image1.svg";
-import offer2 from "../assets/offers-carousel-image2.svg";
+import offer1 from "../../../assets/offers-carousel-image1.svg";
+import offer2 from "../../../assets/offers-carousel-image2.svg";
 
 const OffersCarousel = () => {
     const offerImages = [

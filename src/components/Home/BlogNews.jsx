@@ -4,13 +4,12 @@ import {
     CardActionArea,
     CardContent,
     CardMedia,
-    Grid,
     Typography,
 } from "@mui/material";
 
 // image imports
-import blogNews_img from "../assets/blognews-card-image.svg";
-import blogNews_photo from "../assets/blognews-card-photo.svg";
+import blogNews_img from "../../assets/blognews-card-image.svg";
+import blogNews_photo from "../../assets/blognews-card-photo.svg";
 
 const BlogNews = () => {
     const cards = Array(3).fill(null);

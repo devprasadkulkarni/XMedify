@@ -1,14 +1,14 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 
 // image imports
-import blood_test from "../assets/specialisation-blood-test.svg";
-import cardiology from "../assets/specialisation-cardiology.svg";
-import dentistry from "../assets/specialisation-dentistry.svg";
-import laboratory from "../assets/specialisation-laboratory.svg";
-import mri_resonance from "../assets/specialisation-mri-resonance.svg";
-import piscologist from "../assets/specialisation-piscologist.svg";
-import primary_care from "../assets/specialisation-primary-care.svg";
-import x_ray from "../assets/specialisation-x-ray.svg";
+import blood_test from "../../assets/specialisation-blood-test.svg";
+import cardiology from "../../assets/specialisation-cardiology.svg";
+import dentistry from "../../assets/specialisation-dentistry.svg";
+import laboratory from "../../assets/specialisation-laboratory.svg";
+import mri_resonance from "../../assets/specialisation-mri-resonance.svg";
+import piscologist from "../../assets/specialisation-piscologist.svg";
+import primary_care from "../../assets/specialisation-primary-care.svg";
+import x_ray from "../../assets/specialisation-x-ray.svg";
 
 const Specialisation = () => {
     const specialisations = [
@@ -59,7 +59,10 @@ const Specialisation = () => {
                 gap: 4,
             }}
         >
-            <Typography variant="h3" sx={{ color: "#1B3C74", fontWeight:'bold' }}>
+            <Typography
+                variant="h3"
+                sx={{ color: "#1B3C74", fontWeight: "bold" }}
+            >
                 Find by specialisation
             </Typography>
             <Box>

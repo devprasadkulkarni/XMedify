@@ -6,16 +6,18 @@ import {
     TextField,
     Typography,
 } from "@mui/material";
-import heroImage from "../assets/hero_image.svg";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
-import ambulance from "../assets/search_ambulance.svg";
-import doctors from "../assets/search_doctors.svg";
-import hospitals from "../assets/search_hospitals.svg";
-import labs from "../assets/search_labs.svg";
-import medicalStore from "../assets/search_medical_store.svg";
-import titik from "../assets/titik_titik.svg";
+
+// image imports
+import heroImage from "../../assets/hero_image.svg";
+import ambulance from "../../assets/search_ambulance.svg";
+import doctors from "../../assets/search_doctors.svg";
+import hospitals from "../../assets/search_hospitals.svg";
+import labs from "../../assets/search_labs.svg";
+import medicalStore from "../../assets/search_medical_store.svg";
+import titik from "../../assets/titik_titik.svg";
 
 const API_BASE = "https://meddata-backend.onrender.com";
 

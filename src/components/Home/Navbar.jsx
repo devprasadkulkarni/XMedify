@@ -1,5 +1,5 @@
 import { Box, Button } from "@mui/material";
-import logo from "../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 
 const Navbar = () => {
     const menuItems = [

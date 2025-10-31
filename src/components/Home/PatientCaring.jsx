@@ -2,10 +2,10 @@ import { Box, Grid, Typography } from "@mui/material";
 import React from "react";
 
 // image imports
-import check_tick from "../assets/check-tick.svg";
-import free_consultation from "../assets/free-consultation.svg";
-import patient_caring_1 from "../assets/patient-caring-1.svg";
-import patient_caring_2 from "../assets/patient-caring-2.svg";
+import check_tick from "../../assets/check-tick.svg";
+import free_consultation from "../../assets/free-consultation.svg";
+import patient_caring_1 from "../../assets/patient-caring-1.svg";
+import patient_caring_2 from "../../assets/patient-caring-2.svg";
 
 const patientCaringPoints = [
     "Stay Updated About Your Health",
@@ -114,7 +114,10 @@ const PatientCaring = () => {
                 </Box>
                 <Box>
                     {patientCaringPoints.map((point, idx) => (
-                        <Box key={idx} sx={{ display: "flex", gap: 3, py: 2.5 }}>
+                        <Box
+                            key={idx}
+                            sx={{ display: "flex", gap: 3, py: 2.5 }}
+                        >
                             <img src={check_tick} alt="check mark" />
                             <Typography variant="h6" sx={{ color: "#1B3C74" }}>
                                 {point}
