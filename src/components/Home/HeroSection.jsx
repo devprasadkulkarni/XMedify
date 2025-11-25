@@ -165,6 +165,7 @@ const HeroSection = () => {
                         renderInput={(params) => (
                             <TextField {...params} label="City" />
                         )}
+                        disabled={!selectedState}
                         sx={{ width: 300 }}
                     ></Autocomplete>
                     <Button variant="contained" disabled={!selectedCity}>
