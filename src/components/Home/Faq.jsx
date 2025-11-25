@@ -58,6 +58,7 @@ const Faq = () => {
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
+
     return (
         <Box
             sx={{
@@ -89,7 +90,14 @@ const Faq = () => {
                     <Box sx={{ ml: 40 }}>
                         <img src={faq_img} alt="faq image" />
                     </Box>
-                    <Box sx={{ position: "absolute", top: 180, right: 15 }}>
+                    <Box
+                        sx={{
+                            position: "absolute",
+                            top: 180,
+                            right: 35,
+                            borderRadius: "50",
+                        }}
+                    >
                         <img src={faq_heart} alt="faq heart" />
                     </Box>
                     <Box

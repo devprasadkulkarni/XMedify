@@ -7,6 +7,7 @@ import OurFamilies from "./OurFamilies";
 import PatientCaring from "./PatientCaring";
 import Specialisation from "./Specialisation";
 import Faq from "./Faq";
+import SpecialistCarousel from "../Home/Carousels/SpecialistCarousel";
 
 const Home = () => {
     return (
@@ -16,11 +17,11 @@ const Home = () => {
             <HeroSection />
             <OffersCarousel />
             <Specialisation />
-            {/* <SpecialistCarousel /> */}
+            <SpecialistCarousel />
             <PatientCaring />
             <BlogNews />
             <OurFamilies />
-            <Faq/>
+            <Faq />
         </div>
     );
 };
