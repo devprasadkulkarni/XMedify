@@ -1,14 +1,6 @@
-import {
-    Autocomplete,
-    Box,
-    Button,
-    Grid,
-    TextField,
-    Typography,
-} from "@mui/material";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import SearchIcon from "@mui/icons-material/Search";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { useState } from "react";
+import Search from "./Search";
 
 // image imports
 import heroImage from "../../assets/hero_image.svg";
@@ -19,33 +11,10 @@ import labs from "../../assets/search_labs.svg";
 import medicalStore from "../../assets/search_medical_store.svg";
 import titik from "../../assets/titik_titik.svg";
 
-const API_BASE = "https://meddata-backend.onrender.com";
+
 
 const HeroSection = () => {
-    const [states, setStates] = useState([]);
-    const [cities, setCities] = useState([]);
-    const [selectedState, setSelectedState] = useState(null);
-    const [selectedCity, setSelectedCity] = useState(null);
     const [selected, setSelected] = useState("Hospitals");
-
-    const fetchData = async (endPoint, setter) => {
-        try {
-            const { data } = await axios.get(`${API_BASE}/${endPoint}`);
-            setter(data);
-        } catch (err) {
-            console.error(`Error fetching ${endPoint}: `, err);
-        }
-    };
-
-    useEffect(() => {
-        fetchData("states", setStates);
-    }, []);
-
-    useEffect(() => {
-        if (selectedState) {
-            fetchData(`cities/${selectedState}`, setCities);
-        }
-    }, [selectedState]);
 
     const searchItems = [
         { image: doctors, text: "Doctors" },
@@ -134,44 +103,7 @@ const HeroSection = () => {
                 }}
             >
                 {/* State and city selector */}
-                <Box
-                    sx={{
-                        display: "flex",
-                        px: 30,
-                        justifyContent: "space-between",
-                        gap: 20,
-                    }}
-                >
-                    {/* State selector */}
-                    <Autocomplete
-                        id="state"
-                        options={states}
-                        value={selectedState}
-                        onChange={(e, newValue) => {
-                            setSelectedState(newValue);
-                            setSelectedCity(null);
-                        }}
-                        renderInput={(params) => (
-                            <TextField {...params} label="State" />
-                        )}
-                        sx={{ width: 300 }}
-                    ></Autocomplete>
-                    {/* City selector */}
-                    <Autocomplete
-                        id="city"
-                        options={cities}
-                        value={selectedCity}
-                        onChange={(e, newValue) => setSelectedCity(newValue)}
-                        renderInput={(params) => (
-                            <TextField {...params} label="City" />
-                        )}
-                        disabled={!selectedState}
-                        sx={{ width: 300 }}
-                    ></Autocomplete>
-                    <Button variant="contained" disabled={!selectedCity}>
-                        <SearchIcon /> Search
-                    </Button>
-                </Box>
+                <Search />
                 <Box>
                     <Typography variant="h6" sx={{ textAlign: "center" }}>
                         You maybe looking for

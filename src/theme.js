@@ -5,6 +5,7 @@ const theme = createTheme({
         primary: {
             main: "#2AA7FF",
             darkBlueText: "#1B3C74",
+            cardText: "#00A500",
         },
     },
     typography: {

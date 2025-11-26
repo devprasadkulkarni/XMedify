@@ -12,7 +12,7 @@ const OffersCarousel = () => {
     const offerImages = [offer2, offer1, offer2, offer1];
 
     return (
-        <Box sx={{ mx: 10, mt: 40, mb: 5 }}>
+        <Box sx={{ mx: 10, mt: 45 }}>
             <Swiper
                 slidesPerView={3}
                 spaceBetween={70}
