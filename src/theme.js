@@ -9,6 +9,9 @@ const theme = createTheme({
             cardText: "#00A500",
         },
     },
+
+    shadows: ["none", "0 4px 12px rgba(0, 0, 0, 0.1)"],
+
     typography: {
         fontFamily: "'Poppins', sans-serif",
         fontSize: 12,

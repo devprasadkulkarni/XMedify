@@ -13,7 +13,7 @@ import { Box } from "@mui/material";
 import acc_expand from "../../assets/accordian-expand.svg";
 import faq_heart from "../../assets/faq-heart.svg";
 import faq_img from "../../assets/faq-image.svg";
-import faq_smily from "../../assets/faq-smily.svg";
+import faq_smiley from "../../assets/faq-smiley.svg";
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -52,6 +52,13 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     borderTop: "1px solid rgba(0, 0, 0, .125)",
 }));
 
+const accordianTopics = [
+    "Why choose our medical for your family?",
+    "Why we are different from others?",
+    "Trusted & experience senior care & love",
+    "How to get appointment for emergency cases?",
+];
+
 const Faq = () => {
     const [expanded, setExpanded] = React.useState("");
 
@@ -86,6 +93,7 @@ const Faq = () => {
                     justifyContent: "center",
                 }}
             >
+                {/* Left section */}
                 <Box sx={{ position: "relative" }}>
                     <Box sx={{ ml: 40 }}>
                         <img src={faq_img} alt="faq image" />
@@ -104,11 +112,16 @@ const Faq = () => {
                         sx={{
                             display: "flex",
                             gap: 1,
-                            backgroundColor: "gray",
+                            backgroundColor: "white",
                             width: 200,
                             height: 100,
-                            alignContent: "center",
+                            alignItems: "center",
                             justifyContent: "center",
+                            boxShadow: 1,
+                            borderRadius: 2,
+                            position: "absolute",
+                            bottom: 150,
+                            left: 300,
                         }}
                     >
                         <Box
@@ -116,9 +129,10 @@ const Faq = () => {
                                 display: "flex",
                                 height: 50,
                                 alignItems: "center",
+                                justifyContent: "center",
                             }}
                         >
-                            <img src={faq_smily} alt="faq smily" />
+                            <img src={faq_smiley} alt="faq smiley" />
                         </Box>
                         <Box
                             sx={{
@@ -132,147 +146,51 @@ const Faq = () => {
                         </Box>
                     </Box>
                 </Box>
-                <Box sx={{ ml: 5 }}>
-                    <Accordion
-                        expanded={expanded === "panel1"}
-                        onChange={handleChange("panel1")}
-                        sx={{
-                            backgroundColor: "transparent",
-                            border: "none",
-                            "&::before": { display: "none" },
-                            mb: 5,
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={<img src={acc_expand} />}
-                            aria-controls="panel1d-content"
-                            id="panel1d-header"
-                            sx={{
-                                backgroundColor: "transparent",
-                                border: "none",
-                                "&::before": { display: "none" },
-                            }}
-                        >
-                            <Typography component="span" variant="h6">
-                                Why choose our medical for your family?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography variant="h6">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget. Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit.
-                                Suspendisse malesuada lacus ex, sit amet blandit
-                                leo lobortis eget.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion
-                        expanded={expanded === "panel2"}
-                        onChange={handleChange("panel2")}
-                        sx={{
-                            backgroundColor: "transparent",
-                            border: "none",
-                            "&::before": { display: "none" },
-                            mb: 5,
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={<img src={acc_expand} />}
-                            aria-controls="panel2d-content"
-                            id="panel2d-header"
-                            sx={{
-                                backgroundColor: "transparent",
-                                border: "none",
-                                "&::before": { display: "none" },
-                            }}
-                        >
-                            <Typography variant="h6" component="span">
-                                Why we are different from others?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography variant="h6">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget. Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit.
-                                Suspendisse malesuada lacus ex, sit amet blandit
-                                leo lobortis eget.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion
-                        expanded={expanded === "panel3"}
-                        onChange={handleChange("panel3")}
-                        sx={{
-                            backgroundColor: "transparent",
-                            border: "none",
-                            "&::before": { display: "none" },
-                            mb: 5,
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={<img src={acc_expand} />}
-                            aria-controls="panel3d-content"
-                            id="panel3d-header"
-                            sx={{
-                                backgroundColor: "transparent",
-                                border: "none",
-                                "&::before": { display: "none" },
-                            }}
-                        >
-                            <Typography variant="h6" component="span">
-                                Trusted & experience senior care & love
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography variant="h6">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget. Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit.
-                                Suspendisse malesuada lacus ex, sit amet blandit
-                                leo lobortis eget.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
-                    <Accordion
-                        expanded={expanded === "panel4"}
-                        onChange={handleChange("panel4")}
-                        sx={{
-                            backgroundColor: "transparent",
-                            border: "none",
-                            "&::before": { display: "none" },
-                            mb: 5,
-                        }}
-                    >
-                        <AccordionSummary
-                            expandIcon={<img src={acc_expand} />}
-                            aria-controls="panel4d-content"
-                            id="panel4d-header"
-                            sx={{
-                                backgroundColor: "transparent",
-                                border: "none",
-                                "&::before": { display: "none" },
-                            }}
-                        >
-                            <Typography variant="h6" component="span">
-                                How to get appointment for emergency cases?
-                            </Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography variant="h6">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Suspendisse malesuada lacus ex,
-                                sit amet blandit leo lobortis eget. Lorem ipsum
-                                dolor sit amet, consectetur adipiscing elit.
-                                Suspendisse malesuada lacus ex, sit amet blandit
-                                leo lobortis eget.
-                            </Typography>
-                        </AccordionDetails>
-                    </Accordion>
+
+                {/* Right section */}
+                <Box sx={{ ml: 10 }}>
+                    {accordianTopics.map((topic, index) => {
+                        const panelId = `panel${index + 1}`;
+                        return (
+                            <Accordion
+                                key={index}
+                                expanded={expanded === panelId}
+                                onChange={handleChange(panelId)}
+                                sx={{
+                                    backgroundColor: "transparent",
+                                    border: "none",
+                                    "&::before": { display: "none" },
+                                    mb: 5,
+                                }}
+                            >
+                                <AccordionSummary
+                                    expandIcon={<img src={acc_expand} />}
+                                    aria-controls="panel1d-content"
+                                    id="panel1d-header"
+                                    sx={{
+                                        backgroundColor: "transparent",
+                                        border: "none",
+                                        "&::before": { display: "none" },
+                                    }}
+                                >
+                                    <Typography component="span" variant="h6">
+                                        {topic}
+                                    </Typography>
+                                </AccordionSummary>
+                                <AccordionDetails>
+                                    <Typography variant="h6">
+                                        Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Suspendisse malesuada
+                                        lacus ex, sit amet blandit leo lobortis
+                                        eget. Lorem ipsum dolor sit amet,
+                                        consectetur adipiscing elit. Suspendisse
+                                        malesuada lacus ex, sit amet blandit leo
+                                        lobortis eget.
+                                    </Typography>
+                                </AccordionDetails>
+                            </Accordion>
+                        );
+                    })}
                 </Box>
             </Box>
         </Box>
