@@ -3,11 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { useLocationStore } from "../../store/useLocationStore";
+import { useLocationStore } from "../../store/locationStore";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
+
+    const navigate = useNavigate();
 
     const { selectedState, selectedCity, setSelectedState, setSelectedCity } =
         useLocationStore();
@@ -33,7 +36,14 @@ const Search = () => {
         }
     }, [selectedState]);
 
-    function handleSearch() {}
+    // search function
+
+    function handleSearch() {
+        if (!selectedState || !selectedCity) {
+            return;
+        }
+        navigate(`/searchResults?state=${selectedState}&city=${selectedCity}`);
+    }
 
     return (
         <Box

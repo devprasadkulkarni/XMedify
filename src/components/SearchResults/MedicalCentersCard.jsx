@@ -4,22 +4,29 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
-import { Box } from "@mui/material";
+import { Box, Rating } from "@mui/material";
 
 // image import
 import card_image from "../../assets/card-image.svg";
 import card_text from "../../assets/card-p-text.svg";
 
-const MedicalCentersCard = () => {
+const MedicalCentersCard = ({ item }) => {
     return (
-        <Box>
-            <Card
+        <Card
+            sx={{
+                display: "grid",
+                gridTemplateColumns: "30% 40% 30%",
+                borderRadius: "15px",
+                boxShadow: "none",
+                width: "49vw",
+            }}
+        >
+            {/* Left section */}
+            <Box
                 sx={{
-                    width: 1200,
                     display: "flex",
-                    height: 400,
-                    borderRadius: "15px",
-                    boxShadow: "none",
+                    justifyContent: "center",
+                    alignItems: "center",
                 }}
             >
                 <CardMedia
@@ -27,36 +34,61 @@ const MedicalCentersCard = () => {
                     image={card_image}
                     alt="hospital image"
                     sx={{
-                        width: "100%",
-                        height: "100%",
+                        width: "80%",
+                        height: "80%",
                         objectFit: "contain",
                     }}
                 />
-                <CardMedia
-                    component="img"
-                    image={card_text}
-                    alt="hospital image"
-                    sx={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "contain",
-                    }}
-                />
-                <CardContent sx={{ width: "100%" }}>
+            </Box>
+
+            {/* Middle section & hospital info */}
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    textAlign: "left",
+                }}
+            >
+                <Typography sx={{ color: "primary.main" }}>
+                    {item["Hospital Name"]}
+                </Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                    {item.City}, {item.State}
+                </Typography>
+                <Typography>{item["Hospital Type"]}</Typography>
+                <Typography>more</Typography>
+                <Box sx={{ display: "flex", gap: 1 }}>
                     <Typography
-                        variant="body2"
-                        sx={{ color: "primary.cardText" }}
+                        sx={{ color: "primary.cardText", fontWeight: "bold" }}
                     >
-                        Available Today
+                        FREE
                     </Typography>
-                    <CardActions>
-                        <Button variant="contained">
-                            Book FREE Center Visit
-                        </Button>
-                    </CardActions>
-                </CardContent>
-            </Card>
-        </Box>
+                    <Typography>₹500 Consultation fee at clinic</Typography>
+                </Box>
+                <Box>
+                    <Rating
+                        name="half-rating-read"
+                        defaultValue={item["Hospital overall rating"]}
+                        precision={0.5}
+                        readOnly
+                    />
+                </Box>
+            </Box>
+
+            {/* Right section */}
+            <CardContent sx={{ pt: 10 }}>
+                <Typography
+                    variant="body2"
+                    sx={{ color: "primary.cardText", ml: 1 }}
+                >
+                    Available Today
+                </Typography>
+                <CardActions>
+                    <Button variant="contained">Book FREE Center Visit</Button>
+                </CardActions>
+            </CardContent>
+        </Card>
     );
 };
 
