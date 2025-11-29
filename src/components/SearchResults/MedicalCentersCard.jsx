@@ -6,9 +6,8 @@ import Button from "@mui/material/Button";
 import CardActions from "@mui/material/CardActions";
 import { Box, Rating } from "@mui/material";
 
-// image import
+// image imports
 import card_image from "../../assets/card-image.svg";
-import card_text from "../../assets/card-p-text.svg";
 
 const MedicalCentersCard = ({ item }) => {
     return (

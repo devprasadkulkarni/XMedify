@@ -8,6 +8,8 @@ import PatientCaring from "./PatientCaring";
 import Specialisation from "./Specialisation";
 import Faq from "./Faq";
 import SpecialistCarousel from "../Home/Carousels/SpecialistCarousel";
+import DownloadApp from "./DownloadApp";
+import Footer from "./Footer";
 
 const Home = () => {
     return (
@@ -22,6 +24,8 @@ const Home = () => {
             <BlogNews />
             <OurFamilies />
             <Faq />
+            <DownloadApp />
+            <Footer/>
         </div>
     );
 };
